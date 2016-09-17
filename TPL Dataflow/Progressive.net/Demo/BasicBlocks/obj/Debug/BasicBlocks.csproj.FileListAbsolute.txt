@@ -1,0 +1,6 @@
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\BasicBlocks.exe.config
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\BasicBlocks.exe
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\BasicBlocks.pdb
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\obj\Debug\BasicBlocks.csprojResolveAssemblyReference.cache
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\obj\Debug\BasicBlocks.exe
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\obj\Debug\BasicBlocks.pdb

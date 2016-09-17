@@ -1,0 +1,7 @@
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Common\bin\Debug\Common.dll
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Common\bin\Debug\Common.pdb
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Common\bin\Debug\protobuf-net.dll
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Common\bin\Debug\Wire.dll
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Common\obj\Debug\Common.dll
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Common\obj\Debug\Common.pdb

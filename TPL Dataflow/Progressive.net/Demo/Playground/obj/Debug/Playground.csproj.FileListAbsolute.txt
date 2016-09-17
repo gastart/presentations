@@ -1,0 +1,12 @@
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Playground.exe.config
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Playground.exe
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Playground.pdb
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\protobuf-net.dll
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Wire.dll
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\obj\Debug\Playground.csprojResolveAssemblyReference.cache
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\obj\Debug\Playground.exe
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\obj\Debug\Playground.pdb
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Common.dll
+C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Common.pdb
