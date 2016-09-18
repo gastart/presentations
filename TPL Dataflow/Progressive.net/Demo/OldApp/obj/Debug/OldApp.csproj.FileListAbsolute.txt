@@ -8,3 +8,6 @@ C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\OldApp\bin\Debug\Common.d
 C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\OldApp\bin\Debug\protobuf-net.dll
 C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\OldApp\bin\Debug\Wire.dll
 C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\OldApp\bin\Debug\Common.pdb
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\OldApp\bin\Debug\OldApp.exe.config
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\OldApp\obj\Debug\OldApp.exe
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\OldApp\obj\Debug\OldApp.pdb

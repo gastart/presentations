@@ -11,10 +11,10 @@ namespace NewApp.Blocks
 
         private readonly decimal _adjustmentFactor;
 
-        public ScaleBlock(decimal adjustmentFactor)
+        public ScaleBlock(decimal adjustmentFactor, ExecutionDataflowBlockOptions options)
         {
             _adjustmentFactor = adjustmentFactor;
-            ProcessingBlock = new TransformBlock<Round, Round>((Func<Round, Round>) ProcessItem);
+            ProcessingBlock = new TransformBlock<Round, Round>((Func<Round, Round>) ProcessItem, options);
         }
 
         public override Round DoWork(Round item)

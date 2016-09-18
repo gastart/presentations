@@ -16,5 +16,10 @@ namespace NewApp.Domain
             ProbabilityOfHit = roundMetrics.RatioHaving(m => m.TotalLoss > Zero);
             TailValueAtRiskResult10Years = -roundMetrics.Select(m => -m.TotalLoss).TailValueAtRisk(0.9);
         }
+
+        public override string ToString()
+        {
+            return $"ACL:{AverageCededLoss}, POH: {ProbabilityOfHit}, TVar10: {TailValueAtRiskResult10Years}";
+        }
     }
 }

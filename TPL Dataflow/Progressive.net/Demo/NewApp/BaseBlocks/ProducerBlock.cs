@@ -6,11 +6,15 @@ namespace NewApp.BaseBlocks
     public abstract class ProducerBlock<TInput, TOutput> : BaseBlock, ICalculationOutput<TOutput>
     {
         private readonly BufferBlock<TOutput> _outputBuffer;
+        public ActionBlock<TInput> InputBlock { get; protected set; }
+
+        public override int InputCount() => InputBlock.InputCount;
+        public override int OutputCount() => _outputBuffer.Count;
 
         protected ProducerBlock()
         { 
             _outputBuffer = new BufferBlock<TOutput>();
-            InputBlock = new ActionBlock<TInput>(input => ProcessItem(input));
+            InputBlock = new ActionBlock<TInput>(input => ProcessItem(input), new ExecutionDataflowBlockOptions {MaxDegreeOfParallelism = 1});
 
             InputBlock.Completion.ContinueWith(_ =>
             {
@@ -25,16 +29,6 @@ namespace NewApp.BaseBlocks
 
             });
         }
-
-        public override int InputCount() => InputBlock.InputCount;
-
-
-        public override int OutputCount() => _outputBuffer.Count;
-
-
-
-        public ActionBlock<TInput> InputBlock { get; protected set; }
-
 
         public void ProcessItem(TInput item)
         {

@@ -6,3 +6,11 @@ C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Linking\obj\Debug\Linking
 C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Linking\obj\Debug\Linking.pdb
 C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Linking\bin\Debug\System.Threading.Tasks.Dataflow.dll
 C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Linking\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Linking\bin\Debug\Linking.exe.config
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Linking\obj\Debug\Linking.exe
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Linking\obj\Debug\Linking.pdb
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Linking\bin\Debug\Linking.exe
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Linking\bin\Debug\Linking.pdb
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Linking\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Linking\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Linking\obj\Debug\Linking.csprojResolveAssemblyReference.cache

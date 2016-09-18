@@ -6,6 +6,6 @@ namespace NewApp.Domain
     {
         public int RoundNumber { get; set; }
         public decimal TotalLoss { get; set; }
-        public Loss MaxLoss { get; set; }
+        public decimal MaxLoss { get; set; }
     }
 }

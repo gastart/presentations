@@ -4,8 +4,9 @@ namespace NewApp.BaseBlocks
 {
     public abstract class CalculationBaseBlock<TInput, TOutput> : BaseBlock, ICalculationTarget<TInput>, ICalculationOutput<TOutput>
     {
-
         protected TransformBlock<TInput, TOutput> ProcessingBlock;
+        public override int InputCount() => ProcessingBlock.InputCount;
+        public override int OutputCount() => ProcessingBlock.OutputCount;
 
         public TOutput ProcessItem(TInput item)
         {
@@ -21,18 +22,12 @@ namespace NewApp.BaseBlocks
             return block;
         }
 
-
-
         public ICalculationTarget<TOutput> Then(ICalculationTarget<TOutput> next)
         {
             ThenToTargetBlockWithoutDescription(next.GetTargetBlock());
             AddNextBlock(next.GetBaseBlock());
             return next;
         }
-
-
-        public override int InputCount() => ProcessingBlock.InputCount;
-        public override int OutputCount() => ProcessingBlock.OutputCount;
 
         public ITargetBlock<TInput> GetTargetBlock()
         {
@@ -51,8 +46,10 @@ namespace NewApp.BaseBlocks
 
         ICalculation<TOutput> ICalculationOutput<TOutput>.Then(ICalculation<TOutput> next)
         {
+            var sourceBlock = GetOutput();
+            var targetBlock = next.GetTargetBlock();
+            sourceBlock.LinkTo(targetBlock, new DataflowLinkOptions { PropagateCompletion = true });
 
-            GetOutput().LinkTo(next.GetTargetBlock(), new DataflowLinkOptions { PropagateCompletion = true });
             AddNextBlock(next.GetBaseBlock());
             return next;
         }

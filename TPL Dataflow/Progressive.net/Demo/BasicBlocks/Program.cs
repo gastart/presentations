@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
 namespace BasicBlocks
@@ -11,6 +9,9 @@ namespace BasicBlocks
     {
         static void Main(string[] args)
         {
+            Join();
+            Console.ReadKey();
+
             var bufferBlock = new BufferBlock<int>();
             var broadCast = new BroadcastBlock<int>(x => x + 10);
             var writeOnceBlock = new WriteOnceBlock<int>((a) => a + 100);
@@ -24,45 +25,23 @@ namespace BasicBlocks
             var batchBlock = new BatchBlock<int>(1000);
             var bacthedJoinBlock = new BatchedJoinBlock<int, int>(2);
 
-            JoinAndCalculatePairs();
             //AsyncDownloading();
             Console.ReadKey();
 
         }
 
-        private static void JoinAndCalculatePairs()
+        private static void Join()
         {
-            var bufferBlock = new BufferBlock<int>();
-            var bufferBlock2 = new BufferBlock<int>();
+            var jb = new JoinBlock<int, string>(new GroupingDataflowBlockOptions() {Greedy = true});
+            jb.Target1.Post(2);
+            jb.Target1.Post(3);
+            jb.Target2.Post("hello");
+            jb.Target2.Post("Hmm");
 
-            var joinBlock = new JoinBlock<int, int>(new GroupingDataflowBlockOptions { Greedy = false }); //new GroupingDataflowBlockOptions { Greedy = false }
-            var transform = new TransformBlock<Tuple<int, int>, string>(x => $"{x.Item1} + {x.Item2} = {x.Item1 + x.Item2}");
-
-            var writer = new ActionBlock<string>(x => Console.WriteLine(x));
-
-            bufferBlock.LinkTo(joinBlock.Target1);
-            bufferBlock2.LinkTo(joinBlock.Target2);
-
-            joinBlock.LinkTo(transform);
-            transform.LinkTo(writer);
-
-            foreach (var i in Enumerable.Range(0, 10))
-            {
-                    bufferBlock.Post(i);
-            }
-
-            foreach (var i in Enumerable.Range(10, 20))
-            {
-                    bufferBlock2.Post(i);
-            }
-
-            bufferBlock.Complete();
-            bufferBlock2.Complete();
-            bufferBlock.Completion.Wait();
-            bufferBlock2.Completion.Wait();
-
-            Console.WriteLine("Done");
+            
         }
+
+        
 
         private static void AsyncDownloading()
         {

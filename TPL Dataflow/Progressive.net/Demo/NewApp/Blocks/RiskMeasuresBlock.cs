@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks.Dataflow;
 using Common.Domain;
 using NewApp.BaseBlocks;
 using NewApp.Domain;
@@ -12,25 +14,25 @@ namespace NewApp.Blocks
 
         private readonly List<RoundMetric> _roundMetrics;
 
-        public RiskMeasuresBlock()
+        public RiskMeasuresBlock(ExecutionDataflowBlockOptions options)
         {
             _roundMetrics = new List<RoundMetric>();
+            ProcessingBlock = new TransformBlock<Round, Round>((Func<Round, Round>)ProcessItem, options);
         }
 
         public override Round DoWork(Round item)
         {
-            var metric = new RoundMetric
+            var metric = new RoundMetric { RoundNumber = item.Id };
+
+            if (item.Losses.Any())
             {
-                RoundNumber = item.Id,
-                TotalLoss = item.Losses.Sum(x => x.Amount),
-                MaxLoss = item.Losses.Max()
-            };
+                metric.TotalLoss = item.Losses.Sum(x => x.Amount);
+                metric.MaxLoss = item.Losses.Max(x => x.Amount);
+            }
 
             _roundMetrics.Add(metric);
-
+           
             return item;
-
-
         }
 
         public CalculationResult GetCalculationResult()
