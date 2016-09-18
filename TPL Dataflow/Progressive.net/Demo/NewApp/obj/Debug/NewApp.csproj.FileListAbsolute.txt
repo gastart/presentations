@@ -15,10 +15,8 @@ C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\obj\Debug\N
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\obj\Debug\NewApp.pdb
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\bin\Debug\NewApp.exe
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\bin\Debug\NewApp.pdb
-C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\bin\Debug\Common.dll
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\bin\Debug\System.Threading.Tasks.Dataflow.dll
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\bin\Debug\protobuf-net.dll
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\bin\Debug\Wire.dll
-C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\bin\Debug\Common.pdb
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\bin\Debug\System.Threading.Tasks.Dataflow.xml
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\NewApp\obj\Debug\NewApp.csprojResolveAssemblyReference.cache

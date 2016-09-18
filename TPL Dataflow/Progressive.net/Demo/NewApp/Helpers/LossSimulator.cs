@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Common.Domain;
+using NewApp.Domain;
 
 namespace Common.Helpers
 {
@@ -9,7 +9,7 @@ namespace Common.Helpers
         private readonly Random _random = new Random();
         private DateTime _startDate = new DateTime(2016, 1, 1);
 
-        public IEnumerable<Round> GenerateStatic(int numberOfRounds, int numberOfLosses)
+        public IEnumerable<Round> Generate(int numberOfRounds, int numberOfLosses)
         {
             for (int i = 0; i < numberOfRounds; i++)
             {
@@ -29,12 +29,12 @@ namespace Common.Helpers
 
         }
 
-        public IEnumerable<Round> GenerateRandom(int numberOfRounds, int maxNumberOfLossesPerRound = 5)
+        public IEnumerable<Round> GenerateBetter(int numberOfRounds)
         {
             for (int i = 0; i < numberOfRounds; i++)
             {
                 var round = new Round {Id = i, Losses = new List<Loss>()};
-                for (int j = 0; j < _random.Next(0, maxNumberOfLossesPerRound); j++)
+                for (int j = 0; j < _random.Next(0, 5); j++)
                 {
                     round.Losses.Add(new Loss
                     {

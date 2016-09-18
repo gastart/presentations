@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks.Dataflow;
-using Common.Domain;
 using NewApp.BaseBlocks;
+using NewApp.Domain;
 
 namespace NewApp.Blocks
 {
@@ -19,9 +20,12 @@ namespace NewApp.Blocks
 
         public override Round DoWork(Round item)
         {
-            foreach (var loss in item.Losses)
+            if (item.Losses != null && item.Losses.Any())
             {
-                loss.Scale(_adjustmentFactor);
+                foreach (var loss in item.Losses)
+                {
+                    loss.Scale(_adjustmentFactor);
+                }
             }
             return item;
         }

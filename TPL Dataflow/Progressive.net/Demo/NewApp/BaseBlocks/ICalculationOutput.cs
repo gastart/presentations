@@ -6,7 +6,7 @@ namespace NewApp.BaseBlocks
     {
         ISourceBlock<T> GetOutput();
         ICalculation<T> Then(ICalculation<T> next);
-        ITargetBlock<T> ThenToTargetBlockWithoutDescription(ITargetBlock<T> nullTarget);
+        ITargetBlock<T> Then(ITargetBlock<T> nullTarget);
 
         ICalculationTarget<T> Then(ICalculationTarget<T> next);
     }

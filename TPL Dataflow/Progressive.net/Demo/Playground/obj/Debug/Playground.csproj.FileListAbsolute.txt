@@ -10,3 +10,15 @@ C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\obj\Debug\Play
 C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\obj\Debug\Playground.pdb
 C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Common.dll
 C:\Dev\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Common.pdb
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Playground.exe.config
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Playground.exe
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Playground.pdb
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Common.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\protobuf-net.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Wire.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\Common.pdb
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\obj\Debug\Playground.csprojResolveAssemblyReference.cache
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\obj\Debug\Playground.exe
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Playground\obj\Debug\Playground.pdb

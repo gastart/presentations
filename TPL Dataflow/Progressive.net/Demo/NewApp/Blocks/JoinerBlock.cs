@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks.Dataflow;
-using Common.Domain;
+using NewApp.Domain;
 
 namespace NewApp.Blocks
 {

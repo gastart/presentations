@@ -1,6 +1,4 @@
-﻿using Common.Domain;
-
-namespace NewApp.Domain
+﻿namespace NewApp.Domain
 {
     public class RoundMetric
     {

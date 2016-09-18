@@ -16,7 +16,7 @@ namespace NewApp.BaseBlocks
         public abstract TOutput DoWork(TInput item);
 
 
-        public ITargetBlock<TOutput> ThenToTargetBlockWithoutDescription(ITargetBlock<TOutput> block)
+        public ITargetBlock<TOutput> Then(ITargetBlock<TOutput> block)
         {
             GetOutput().LinkTo(block, new DataflowLinkOptions { PropagateCompletion = true });
             return block;
@@ -24,7 +24,7 @@ namespace NewApp.BaseBlocks
 
         public ICalculationTarget<TOutput> Then(ICalculationTarget<TOutput> next)
         {
-            ThenToTargetBlockWithoutDescription(next.GetTargetBlock());
+            Then(next.GetTargetBlock());
             AddNextBlock(next.GetBaseBlock());
             return next;
         }

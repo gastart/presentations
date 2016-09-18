@@ -49,11 +49,11 @@ namespace NewApp.BaseBlocks
 
         public ICalculation<TOutput> Then(ICalculation<TOutput> next)
         {
-            ThenToTargetBlockWithoutDescription(next.GetTargetBlock());
+            Then(next.GetTargetBlock());
             return next;
         }
 
-        public ITargetBlock<TOutput> ThenToTargetBlockWithoutDescription(ITargetBlock<TOutput> next)
+        public ITargetBlock<TOutput> Then(ITargetBlock<TOutput> next)
         {
             GetOutput().LinkTo(next, new DataflowLinkOptions { PropagateCompletion = true });
             return next;
@@ -61,7 +61,7 @@ namespace NewApp.BaseBlocks
 
         public ICalculationTarget<TOutput> Then(ICalculationTarget<TOutput> next)
         {
-            ThenToTargetBlockWithoutDescription(next.GetTargetBlock());
+            Then(next.GetTargetBlock());
             return next;
         }
 

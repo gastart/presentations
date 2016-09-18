@@ -17,15 +17,16 @@ namespace Playground
             var fileName = @"c:\temp\losses_small_all";
             var fileName2 = @"c:\temp\losses_large_all";
 
-            var losses = lossSimulator.Generate(20000, 100);
-            var losses2 = lossSimulator.Generate(100000, 100);
+            var losses = lossSimulator.GenerateStatic(20000, 100);
+            var losses2 = lossSimulator.GenerateStatic(100000, 100);
 
-            var betterLosses = lossSimulator.GenerateBetter(20000);
+            var betterLosses = lossSimulator.GenerateRandom(1000000, 1000);
 
             var protobufData = new ProtobufData<Round>();
             var wireData = new WireData<Round>();
 
-            wireData.WriteAll(betterLosses.ToList(), @"c:\temp\losses_small_better", Console.WriteLine);
+            //wireData.WriteAll(betterLosses.ToList(), @"c:\temp\losses_small_better", Console.WriteLine);
+            protobufData.WriteStreamedData(@"c:\temp\losses_large_streamed", betterLosses, Console.WriteLine);
 
             //protobufData.WriteAll(losses.ToList(), fileName, Console.WriteLine);
             //protobufData.WriteAll(losses2.ToList(), fileName2, Console.WriteLine);

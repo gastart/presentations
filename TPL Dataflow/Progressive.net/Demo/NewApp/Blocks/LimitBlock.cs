@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks.Dataflow;
-using Common.Domain;
 using NewApp.BaseBlocks;
+using NewApp.Domain;
 
 namespace NewApp.Blocks
 {
@@ -19,20 +19,23 @@ namespace NewApp.Blocks
 
         public override Round DoWork(Round item)
         {
-            var sumOfLosses = item.Losses.Sum(_ => _.Amount);
-            var originalTotalSum = sumOfLosses;
-
-            if (originalTotalSum > _limit)
+            if(item.Losses!= null && item.Losses.Any())
             {
-                sumOfLosses = _limit;
-            }
+                var sumOfLosses = item.Losses.Sum(_ => _.Amount);
+                var originalTotalSum = sumOfLosses;
 
-            if (sumOfLosses < originalTotalSum)
-            {
-                var scaleFactor = sumOfLosses / originalTotalSum;
-                foreach (var loss in item.Losses)
+                if (originalTotalSum > _limit)
                 {
-                    loss.Scale(scaleFactor);
+                    sumOfLosses = _limit;
+                }
+
+                if (sumOfLosses < originalTotalSum)
+                {
+                    var scaleFactor = sumOfLosses / originalTotalSum;
+                    foreach (var loss in item.Losses)
+                    {
+                        loss.Scale(scaleFactor);
+                    }
                 }
             }
 
