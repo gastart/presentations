@@ -58,7 +58,9 @@
     <Compile Include="BaseBlocks\CalculationBaseBlock.cs" />
     <Compile Include="BaseBlocks\ProducerBlock.cs" />
     <Compile Include="BaseBlocks\CalculationSameBaseBlock.cs" />
+    <Compile Include="Blocks\CustomJoinBlock.cs" />
     <Compile Include="Blocks\DataWriterBlock.cs" />
+    <Compile Include="Blocks\JoinLossesBlock.cs" />
     <Compile Include="DataAccess\DataFormat.cs" />
     <Compile Include="Helpers\LossSimulator.cs" />
     <Compile Include="Blocks\JoinerBlock.cs" />

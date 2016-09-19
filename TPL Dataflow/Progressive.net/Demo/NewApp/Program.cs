@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using NewApp.Blocks;
@@ -12,8 +13,6 @@ namespace NewApp
     {
         static void Main(string[] args)
         {
-            List<string> sources = new List<string> {"", ""};
-            string inFile = @"c:\temp\losses_large_streamed_in1";
             string outFile = @"c:\temp\losses_large_streamed_out";
 
             var executionDataflowBlockOptionsSingle = new ExecutionDataflowBlockOptions {MaxDegreeOfParallelism = 1};
@@ -23,17 +22,14 @@ namespace NewApp
             var dataReader = new DataReaderBlock(DataFormat.Protobuf, roundCount);
             var dataWriter = new DataWriterBlock(outFile, DataFormat.Protobuf, roundCount, executionDataflowBlockOptionsSingle);
 
-            var customJoin = new CustomJoinBlock(2, executionDataflowBlockOptionsSingle);
+            var joiner = new JoinLossesBlock();
 
-            var joiner = new JoinBlock<Round, Round>();
-            
-
-            var limiter = new LimitBlock(30000, executionDataflowBlockOptions);
+            var limiter = new LimitBlock(300000, executionDataflowBlockOptions);
             var scaler = new ScaleBlock(0.9m, executionDataflowBlockOptions);
             var risk = new RiskMeasuresBlock(executionDataflowBlockOptionsSingle);
             var nullTarget = DataflowBlock.NullTarget<Round>();
 
-            dataReader
+            joiner
                 .Then(limiter)
                 .Then(scaler)
                 .Then(risk)
@@ -41,22 +37,14 @@ namespace NewApp
                 .Then(nullTarget);
 
 
-            foreach (var s in sources)
-            {
-                customJoin.GetTargetBlock().Post()
-                var dataReader2 = new DataReaderBlock(DataFormat.Protobuf, roundCount);
-                processingContainer.ConnectLossSource(loadRoundsBlock, prop.LossHref);
-                dataReader.InputBlock.Post(inFile);
-                dataReader.InputBlock.Complete();
-            }
+            GetAndSendTrials(joiner, roundCount);
 
             var calculationStartDate = DateTime.UtcNow;
-            dataReader.InputBlock.Post(inFile);
-            dataReader.InputBlock.Complete();
+            joiner.GetInputBlock().Complete();
 
-            //risk.GetOutput().Completion.Wait();
+            //dataWriter.GetOutput().Completion.Wait();
 
-            while (!risk.GetOutput().Completion.IsCompleted)
+            while (!dataWriter.GetOutput().Completion.IsCompleted)
             {
                 var totalTimeElapsed = Math.Round((DateTime.UtcNow - calculationStartDate).TotalSeconds, 2);
                 var calculatedTrials = risk.GetProcessedItemsCount();
@@ -64,7 +52,7 @@ namespace NewApp
 
                 Console.WriteLine($"Elapsed: {totalTimeElapsed}s, {calculatedTrials}/{roundCount} ({percentComplete}%)");
 
-                var tasksToWaitFor = new[] { Task.Delay(1000), risk.GetOutput().Completion };
+                var tasksToWaitFor = new[] { Task.Delay(1000), dataWriter.GetOutput().Completion };
                 Task.WaitAny(tasksToWaitFor);
             }
             Console.WriteLine("");
@@ -73,6 +61,25 @@ namespace NewApp
 
             Console.ReadKey();
 
+        }
+
+        private static void GetAndSendTrials(JoinLossesBlock joiner, int roundCount)
+        {
+            string inFile = @"c:\temp\losses_large_streamed_in1";
+            string inFile2 = @"c:\temp\losses_large_streamed_in2";
+
+            IDataReader<Round> reader = new ProtobufData<Round>();
+            var source1 = reader.GetStreamedData(inFile, roundCount).GetEnumerator();
+            var source2 = reader.GetStreamedData(inFile2, roundCount).GetEnumerator();
+
+            foreach (var i in Enumerable.Range(0, roundCount))
+            {
+                source1.MoveNext();
+                source2.MoveNext();
+
+                joiner.Post1(source1.Current);
+                joiner.Post2(source2.Current);
+            }
         }
     }
 }
