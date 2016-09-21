@@ -10,3 +10,9 @@ C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\obj\De
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\BasicBlocks.exe
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\BasicBlocks.pdb
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\obj\Debug\BasicBlocks.csprojResolveAssemblyReference.cache
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\nunit.framework.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\nunit.framework.xml
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\NewApp.exe
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\protobuf-net.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\Wire.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\BasicBlocks\bin\Debug\NewApp.pdb

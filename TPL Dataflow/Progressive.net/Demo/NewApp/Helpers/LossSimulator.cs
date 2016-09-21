@@ -9,11 +9,11 @@ namespace Common.Helpers
         private readonly Random _random = new Random();
         private DateTime _startDate = new DateTime(2016, 1, 1);
 
-        public IEnumerable<Round> Generate(int numberOfRounds, int numberOfLosses)
+        public IEnumerable<Trial> Generate(int numberOfRounds, int numberOfLosses)
         {
             for (int i = 0; i < numberOfRounds; i++)
             {
-                var round = new Round {Id = i, Losses = new List<Loss>()};
+                var round = new Trial {Id = i, Losses = new List<Loss>()};
                 for (int j = 0; j < numberOfLosses; j++)
                 {
                     round.Losses.Add(new Loss
@@ -29,11 +29,11 @@ namespace Common.Helpers
 
         }
 
-        public IEnumerable<Round> GenerateBetter(int numberOfRounds)
+        public IEnumerable<Trial> GenerateBetter(int numberOfRounds)
         {
             for (int i = 0; i < numberOfRounds; i++)
             {
-                var round = new Round {Id = i, Losses = new List<Loss>()};
+                var round = new Trial {Id = i, Losses = new List<Loss>()};
                 for (int j = 0; j < _random.Next(0, 5); j++)
                 {
                     round.Losses.Add(new Loss

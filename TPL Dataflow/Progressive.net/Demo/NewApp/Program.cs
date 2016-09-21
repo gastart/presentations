@@ -27,7 +27,7 @@ namespace NewApp
             var limiter = new LimitBlock(300000, executionDataflowBlockOptions);
             var scaler = new ScaleBlock(0.9m, executionDataflowBlockOptions);
             var risk = new RiskMeasuresBlock(executionDataflowBlockOptionsSingle);
-            var nullTarget = DataflowBlock.NullTarget<Round>();
+            var nullTarget = DataflowBlock.NullTarget<Trial>();
 
             joiner
                 .Then(limiter)
@@ -36,6 +36,7 @@ namespace NewApp
                 .Then(dataWriter)
                 .Then(nullTarget);
 
+           
 
             GetAndSendTrials(joiner, roundCount);
 
@@ -68,7 +69,7 @@ namespace NewApp
             string inFile = @"c:\temp\losses_large_streamed_in1";
             string inFile2 = @"c:\temp\losses_large_streamed_in2";
 
-            IDataReader<Round> reader = new ProtobufData<Round>();
+            IDataReader<Trial> reader = new ProtobufData<Trial>();
             var source1 = reader.GetStreamedData(inFile, roundCount).GetEnumerator();
             var source2 = reader.GetStreamedData(inFile2, roundCount).GetEnumerator();
 

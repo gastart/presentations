@@ -4,7 +4,7 @@ using ProtoBuf;
 namespace NewApp.Domain
 {
     [ProtoContract]
-    public class Round
+    public class Trial
     {
         [ProtoMember(1)]
         public int Id { get; set; }

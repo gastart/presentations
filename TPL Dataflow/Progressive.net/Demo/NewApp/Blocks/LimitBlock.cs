@@ -6,7 +6,7 @@ using NewApp.Domain;
 
 namespace NewApp.Blocks
 {
-    public class LimitBlock : CalculationSameBaseBlock<Round>
+    public class LimitBlock : CalculationSameBaseBlock<Trial>
     {
         private readonly int _limit;
         public override string BlockName => "LimitBlock";
@@ -14,10 +14,10 @@ namespace NewApp.Blocks
         public LimitBlock(int limit, ExecutionDataflowBlockOptions options)
         {
             _limit = limit;
-            ProcessingBlock = new TransformBlock<Round, Round>((Func<Round, Round>)ProcessItem, options);
+            ProcessingBlock = new TransformBlock<Trial, Trial>((Func<Trial, Trial>)ProcessItem, options);
         }
 
-        public override Round DoWork(Round item)
+        public override Trial DoWork(Trial item)
         {
             if(item.Losses!= null && item.Losses.Any())
             {

@@ -22,32 +22,33 @@ namespace Playground
 
             var betterLosses = lossSimulator.GenerateRandom(1000000, 1000);
 
-            var protobufData = new ProtobufData<Round>();
-            var wireData = new WireData<Round>();
+            var protobufData = new ProtobufData<Trial>();
+            var wireData = new WireData<Trial>();
 
             //wireData.WriteAll(betterLosses.ToList(), @"c:\temp\losses_small_better", Console.WriteLine);
             protobufData.WriteStreamedData(@"c:\temp\losses_large_streamed", betterLosses, Console.WriteLine);
+            wireData.WriteStreamedData(@"c:\temp\losses_large_streamed", betterLosses, Console.WriteLine);
 
             //protobufData.WriteAll(losses.ToList(), fileName, Console.WriteLine);
             //protobufData.WriteAll(losses2.ToList(), fileName2, Console.WriteLine);
             //wireData.WriteAll(losses.ToList(), fileName, Console.WriteLine);
             //wireData.WriteAll(losses2.ToList(), fileName2, Console.WriteLine);
 
-            List<Round> r = protobufData.ReadAll(fileName);
-            List<Round> r2 = protobufData.ReadAll(fileName2);
+            List<Trial> r = protobufData.ReadAll(fileName);
+            List<Trial> r2 = protobufData.ReadAll(fileName2);
 
-            List<Round> r3 = wireData.ReadAll(fileName);
-            List<Round> r4 = wireData.ReadAll(fileName2);
+            List<Trial> r3 = wireData.ReadAll(fileName);
+            List<Trial> r4 = wireData.ReadAll(fileName2);
 
 
             //int roundCount = protobufData.WriteStreamedData(fileName + ".pb", losses, Console.WriteLine);
             //int roundCount2 = wireData.WriteStreamedData(fileName + ".wir", losses, Console.WriteLine);
 
-            // IEnumerable<Round> allData = wireData.GetStreamedData(fileName + ".wir", roundCount2);
-            //IEnumerable<Round> allData2 = protobufData.GetStreamedData(fileName + ".pb", roundCount);
+            // IEnumerable<Trial> allData = wireData.GetStreamedData(fileName + ".wir", roundCount2);
+            //IEnumerable<Trial> allData2 = protobufData.GetStreamedData(fileName + ".pb", roundCount);
 
-            ActionBlock<Round> consoleWriter = new ActionBlock<Round>(x => Console.WriteLine(x));
-            TransformBlock<Round, Round> aggregator = new TransformBlock<Round, Round>(x => x, new ExecutionDataflowBlockOptions()
+            ActionBlock<Trial> consoleWriter = new ActionBlock<Trial>(x => Console.WriteLine(x));
+            TransformBlock<Trial, Trial> aggregator = new TransformBlock<Trial, Trial>(x => x, new ExecutionDataflowBlockOptions()
             {
                 MaxDegreeOfParallelism = 1
             });

@@ -16,7 +16,7 @@ namespace Common.DataAccess
             int roundCount = 0;
 
             IList<Type> types = new List<Type>();
-            types.Add(typeof(Round));
+            types.Add(typeof(Trial));
             types.Add(typeof(Loss));
 
             Serializer serializer = new Serializer();
@@ -50,7 +50,7 @@ namespace Common.DataAccess
         public IEnumerable<T> GetStreamedData(string source, int roundCount)
         {
             IList<Type> types = new List<Type>();
-            types.Add(typeof(Round));
+            types.Add(typeof(Trial));
             types.Add(typeof(Loss));
 
             Serializer serializer = new Serializer();

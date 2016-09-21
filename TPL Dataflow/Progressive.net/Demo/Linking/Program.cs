@@ -9,7 +9,7 @@ namespace Linking
     {
         static void Main(string[] args)
         {
-            //Overflow();
+            Overflow();
             //Console.ReadKey();
 
             AsyncThrottling();
@@ -19,8 +19,7 @@ namespace Linking
 
             TransformBlock<int, int> multiplyer = new TransformBlock<int, int>(x => x * x);
 
-            multiplyer.LinkTo(writer);
-
+            IDisposable link = multiplyer.LinkTo(writer);
             foreach (var i in Enumerable.Range(0, 20))
             {
                 multiplyer.Post(i);
@@ -30,7 +29,6 @@ namespace Linking
 
         private static async void AsyncThrottling()
         {
-
             var consumer = new ActionBlock<int>(async x =>
                 {
                     await Task.Delay(200);
@@ -46,17 +44,13 @@ namespace Linking
                     await consumer.SendAsync(i);
                 }
             });
-
-            producer.Post(0);
+            producer.Post(1);
             producer.Complete();
-
             await producer.Completion;
-
         }
 
         private static async void Overflow()
         {
-
             var consumer = new ActionBlock<int>(async x =>
             {
                 await Task.Delay(2000);
@@ -70,16 +64,11 @@ namespace Linking
                 {
                     consumer.Post(i);
                 }
-
                 Console.WriteLine("Sent all");
-
             });
-
             producer.Post(1);
             producer.Complete();
-
             await producer.Completion;
-
         }
 
 

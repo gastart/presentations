@@ -10,15 +10,15 @@ namespace NewApp.Blocks
     {
         public override string BlockName => "JoinLossesBlock";
 
-        private readonly JoinBlock<Round, Round> _joinBlock;
-        private readonly BufferBlock<Round> _outputBuffer;
+        private readonly JoinBlock<Trial, Trial> _joinBlock;
+        private readonly BufferBlock<Trial> _outputBuffer;
 
         public JoinLossesBlock()
         {
-            _joinBlock = new JoinBlock<Round, Round>();
-            _outputBuffer = new BufferBlock<Round>();
+            _joinBlock = new JoinBlock<Trial, Trial>();
+            _outputBuffer = new BufferBlock<Trial>();
 
-            var joinAction = new ActionBlock<Tuple<Round, Round>>(items =>
+            var joinAction = new ActionBlock<Tuple<Trial, Trial>>(items =>
             {
                 var joined = DoWork(items);
                 _outputBuffer.SendAsync(joined).Wait();
@@ -41,13 +41,13 @@ namespace NewApp.Blocks
             _joinBlock.LinkTo(joinAction,new DataflowLinkOptions {PropagateCompletion = true});
         }
 
-        private Round DoWork(Tuple<Round, Round> r)
+        private Trial DoWork(Tuple<Trial, Trial> r)
         {
 
             if(r.Item1.Id != r.Item2.Id)
                 throw new ArgumentException();
 
-            var round = new Round
+            var round = new Trial
             {
                 Id = r.Item1.Id,
                 Losses = new List<Loss>()
@@ -63,12 +63,12 @@ namespace NewApp.Blocks
         }
 
 
-        public void Post1(Round item)
+        public void Post1(Trial item)
         {
             _joinBlock.Target1.SendAsync(item);
         }
 
-        public void Post2(Round item)
+        public void Post2(Trial item)
         {
             _joinBlock.Target2.SendAsync(item);
         }
@@ -76,12 +76,12 @@ namespace NewApp.Blocks
         public override int InputCount() => -1;
         public override int OutputCount() => _joinBlock.OutputCount;
 
-        public ISourceBlock<Tuple<Round, Round>> GetInputBlock()
+        public ISourceBlock<Tuple<Trial, Trial>> GetInputBlock()
         {
             return _joinBlock;
         }
 
-        public ICalculation<Round> Then(ICalculation<Round> next)
+        public ICalculation<Trial> Then(ICalculation<Trial> next)
         {
             var targetBlock = next.GetTargetBlock();
             _outputBuffer.LinkTo(targetBlock, new DataflowLinkOptions { PropagateCompletion = true });
@@ -90,13 +90,13 @@ namespace NewApp.Blocks
             return next;
         }
 
-        public ITargetBlock<Round> Then(ITargetBlock<Round> nullTarget)
+        public ITargetBlock<Trial> Then(ITargetBlock<Trial> nullTarget)
         {
             _outputBuffer.LinkTo(nullTarget, new DataflowLinkOptions { PropagateCompletion = true });
             return nullTarget;
         }
 
-        public ICalculationTarget<Round> Then(ICalculationTarget<Round> next)
+        public ICalculationTarget<Trial> Then(ICalculationTarget<Trial> next)
         {
             Then(next.GetTargetBlock());
             AddNextBlock(next.GetBaseBlock());

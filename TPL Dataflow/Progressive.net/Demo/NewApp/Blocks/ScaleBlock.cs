@@ -6,7 +6,7 @@ using NewApp.Domain;
 
 namespace NewApp.Blocks
 {
-    public class ScaleBlock : CalculationSameBaseBlock<Round>
+    public class ScaleBlock : CalculationSameBaseBlock<Trial>
     {
         public sealed override string BlockName => GetType().Name;
 
@@ -15,10 +15,10 @@ namespace NewApp.Blocks
         public ScaleBlock(decimal adjustmentFactor, ExecutionDataflowBlockOptions options)
         {
             _adjustmentFactor = adjustmentFactor;
-            ProcessingBlock = new TransformBlock<Round, Round>((Func<Round, Round>) ProcessItem, options);
+            ProcessingBlock = new TransformBlock<Trial, Trial>((Func<Trial, Trial>) ProcessItem, options);
         }
 
-        public override Round DoWork(Round item)
+        public override Trial DoWork(Trial item)
         {
             if (item.Losses != null && item.Losses.Any())
             {

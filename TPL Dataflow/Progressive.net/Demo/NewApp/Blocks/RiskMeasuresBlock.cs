@@ -7,7 +7,7 @@ using NewApp.Domain;
 
 namespace NewApp.Blocks
 {
-    public class RiskMeasuresBlock : CalculationSameBaseBlock<Round>
+    public class RiskMeasuresBlock : CalculationSameBaseBlock<Trial>
     {
         public sealed override string BlockName => GetType().Name;
 
@@ -17,10 +17,10 @@ namespace NewApp.Blocks
         public RiskMeasuresBlock(ExecutionDataflowBlockOptions options)
         {
             _roundMetrics = new List<RoundMetric>();
-            ProcessingBlock = new TransformBlock<Round, Round>((Func<Round, Round>)ProcessItem, options);
+            ProcessingBlock = new TransformBlock<Trial, Trial>((Func<Trial, Trial>)ProcessItem, options);
         }
 
-        public override Round DoWork(Round item)
+        public override Trial DoWork(Trial item)
         {
             var metric = new RoundMetric { RoundNumber = item.Id };
 

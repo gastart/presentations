@@ -6,12 +6,12 @@ using NewApp.Domain;
 
 namespace NewApp.Blocks
 {
-    public class DataReaderBlock : ProducerBlock<string, Round>
+    public class DataReaderBlock : ProducerBlock<string, Trial>
     {
         private readonly int _roundCount;
         public override string BlockName => "DataReader";
 
-        private readonly IDataReader<Round> _dataReader;
+        private readonly IDataReader<Trial> _dataReader;
 
         public DataReaderBlock(DataFormat dataFormat, int roundCount)
         {
@@ -19,17 +19,17 @@ namespace NewApp.Blocks
             switch (dataFormat)
             {
                 case DataFormat.Wire:
-                    _dataReader = new WireData<Round>();
+                    _dataReader = new WireData<Trial>();
                     break;
                 case DataFormat.Protobuf:
-                    _dataReader = new ProtobufData<Round>();
+                    _dataReader = new ProtobufData<Trial>();
                     break;
                 default:
                     throw new ArgumentException($"DataFormat {dataFormat} is not supported");
             }
         }
 
-        public override IEnumerable<Round> DoWork(string item)
+        public override IEnumerable<Trial> DoWork(string item)
         {
             return _dataReader.GetStreamedData(item, _roundCount);
         }
