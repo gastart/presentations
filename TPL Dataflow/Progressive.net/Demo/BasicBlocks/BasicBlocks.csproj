@@ -48,12 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlockTest.cs" />
-    <Compile Include="CustomBufferBlock.cs" />
-    <Compile Include="CustomTransformBlock.cs" />
-    <Compile Include="ICustomBlock.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatefulBlock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

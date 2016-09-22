@@ -10,6 +10,27 @@ namespace BasicBlocks
     {
         static void Main(string[] args)
         {
+
+
+            var bb = new BufferBlock<int>();
+            var a1 = new ActionBlock<int>(x => Console.WriteLine("A1: " + x));
+            var a2 = new ActionBlock<int>(x => Console.WriteLine("A2: " + x));
+            var a3 = new ActionBlock<int>(x => Console.WriteLine("A3: " + x));
+
+            bb.LinkTo(a1, i => i>100);
+            bb.LinkTo(a2, i => i>10);
+            bb.LinkTo(a3);
+
+            bb.Post(200);
+            bb.Post(15);
+            bb.Post(2);
+            bb.Post(300);
+
+            bb.Complete();
+            a1.Completion.Wait();
+            Console.ReadKey();
+
+
             ActionBlock<int> action = new ActionBlock<int>((x) =>
             {
                 throw new Exception("Test");
@@ -41,29 +62,6 @@ namespace BasicBlocks
             
         }
 
-        private static void T()
-        {
-            var buffer = new CustomBufferBlock<int>();
-            var transform1 = new CustomTransformBlock<int>();
-            var transform2 = new CustomTransformBlock<int>();
-            var action = new StatefulBlock();
-            var nullTarget = DataflowBlock.NullTarget<int>();
-
-            buffer.Then(transform1)
-                .Then(transform2)
-                .Then(action)
-                .ThenTerminate(nullTarget);
-
-            buffer.Post(2);
-            buffer.Post(5);
-            buffer.Post(6);
-
-            buffer.Complete();
-            action.Completion.Wait();
-
-            Console.WriteLine(action.Average());
-        }
-
         private static void AsyncDownloading()
         {
             var downloadAndPrintBlock = new ActionBlock<string>(async url =>
@@ -82,7 +80,6 @@ namespace BasicBlocks
 
         private static void T2()
         {
-            T();
             Console.ReadKey();
 
             var rnd = new Random();

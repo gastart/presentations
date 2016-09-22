@@ -33,7 +33,7 @@ namespace Presentation
             joiner.LinkTo(transformer, new DataflowLinkOptions {PropagateCompletion = true});
             transformer.LinkTo(manipulator, new DataflowLinkOptions {PropagateCompletion = true});
             manipulator.LinkTo(sb.Block, new DataflowLinkOptions {PropagateCompletion = true});
-            //sb.Block.LinkTo(DataflowBlock.NullTarget<Trial>());
+            sb.Block.LinkTo(DataflowBlock.NullTarget<Trial>());
 
             Generate(10, joiner.Target1);
             Generate(100, joiner.Target2);

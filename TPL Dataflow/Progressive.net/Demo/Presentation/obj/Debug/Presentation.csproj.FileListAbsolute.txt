@@ -1,12 +1,12 @@
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\Presentation.exe.config
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\Presentation.exe
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\Presentation.pdb
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\Common.dll
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\Wire.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\protobuf-net.dll
+C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\Common.pdb
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\System.Threading.Tasks.Dataflow.xml
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\obj\Debug\Presentation.exe
 C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\obj\Debug\Presentation.pdb
-C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\Common.dll
-C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\protobuf-net.dll
-C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\Wire.dll
-C:\Dev\github\presentations\TPL Dataflow\Progressive.net\Demo\Presentation\bin\Debug\Common.pdb

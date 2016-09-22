@@ -78,6 +78,8 @@
     <Compile Include="Domain\MathExtensions.cs" />
     <Compile Include="Domain\RiskMeasures.cs" />
     <Compile Include="Domain\Trial.cs" />
+    <Compile Include="LossGenerator.cs" />
+    <Compile Include="ProcessingContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Blocks\RiskMeasuresBlock.cs" />
